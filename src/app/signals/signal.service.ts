@@ -4,10 +4,12 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root'
 })
 export class SignalService {
-  currencies = signal(['USD', 'EUR', 'GBP']);
-  selectedCurrency = signal('??');
+  private currencies = signal(['USD', 'EUR', 'GBP']);
+  currencies$ = this.currencies.asReadonly();
+  private selectedCurrency$ = signal(this.currencies()[0]);
+  public selectedCurrency = this.selectedCurrency$.asReadonly();
   updateSelectedCurrency(currencie: string) {
-    this.selectedCurrency.set(currencie);
+    this.selectedCurrency$.set(currencie);
   }
   constructor() { }
 }

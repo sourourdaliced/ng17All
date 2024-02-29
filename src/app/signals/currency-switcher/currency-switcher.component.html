@@ -1,0 +1,7 @@
+<select #selectCurrency (change)="onChangeCurrency(selectCurrency.value)">
+  @for(currency of currencyService.currencies$(); track currency) {
+  <option  value="{{currency}}">
+    {{currency}}
+  </option>
+}
+</select>

@@ -12,12 +12,8 @@ import { SignalApiComponent } from "./signals/signal-api/signal-api.component";
     styleUrl: './app.component.css',
     imports: [
         NavbarComponent,
-        FormsModule,
         RouterOutlet,
-        IsEvenComponent,
-        SignalApiComponent
     ]
 })
 export class AppComponent {
-  counter = 0;
 }
