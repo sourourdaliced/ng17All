@@ -24,6 +24,14 @@ export class SignalApiComponent {
   firstname = signal('aymen');
   fullname = computed(() => `${this.firstname()} ${untracked(this.lastname)}`);
   counter = signal(0);
+  multiple = 0;
+  multipliedCounter = computed(() => {
+    if (this.multiple == 0) {
+      return 0
+    } else {
+      return this.counter() * this.multiple;
+    }
+  });
 
   increment() {
     this.counter.update((currentValue) => currentValue + 1);
