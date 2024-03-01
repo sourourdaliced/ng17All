@@ -19,4 +19,9 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./signals/signals.routes').then((m) => m.SIGNAL_ROUTES),
   },
+  {
+    path: 'flow',
+    loadChildren: () =>
+      import('./workflow/flow.routes').then((m) => m.FLOW_ROUTES),
+  },
 ];

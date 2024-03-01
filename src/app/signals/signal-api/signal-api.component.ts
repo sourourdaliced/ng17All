@@ -22,7 +22,11 @@ import { Component, computed, signal, untracked } from '@angular/core';
 export class SignalApiComponent {
   lastname = signal('sellaouti');
   firstname = signal('aymen');
-  fullname = computed(() => `${this.firstname()} ${untracked(this.lastname)}`);
+  fullname = computed(() => {
+    console.log('i am computing....');
+    // this.firstname.set('ccc');
+    return `${this.firstname()} ${untracked(this.lastname)}`;
+  });
   counter = signal(0);
   multiple = 0;
   multipliedCounter = computed(() => {

@@ -1,0 +1,31 @@
+<ul>
+  <li *ngFor="let episode of episodes">{{ episode.title }}</li>
+</ul>
+<ul>
+  @for (episode of episodes; track episode.id) {
+  <li>{{ episode.title }}</li>
+  }
+</ul>
+<ul>
+  <li
+    *ngFor="
+      let episode of episodes;
+      let i = index;
+      let isOdd = odd;
+      let isFirst = first
+    "
+    [ngClass]="{ odd: isOdd, bgfonce: isFirst }"
+  >
+    Episode {{ i + 1 }}{{ episode.title }}
+  </li>
+</ul>
+
+<ul>
+  @for (episode of episodes; track episode.id) {
+  <li
+    [ngClass]="{ odd: $odd, bgfonce: $first }"
+  >
+    Episode {{ $index + 1 }} : {{ episode.title }}
+  </li>
+  }
+</ul>
