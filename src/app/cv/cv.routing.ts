@@ -30,5 +30,12 @@ export const CV_ROUTES = [
       },
     ],
   },
-  { path: ':id', component: DetailsCvComponent },
+  {
+    path: ':id',
+    component: DetailsCvComponent,
+    resolve: { cv: DetailsResolver },
+    data: {
+      someData: { name: 'aymen' },
+    },
+  },
 ];
