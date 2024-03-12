@@ -1,0 +1,14 @@
+<p>defer works!</p>
+<p>differ examples!</p>
+@defer(on idle ; prefetch on idle) {
+  <app-huge/>
+}
+@placeholder(minimum 1s) {
+  <h2>Nous chargeons le Huge Component merci de nous attendre :)</h2>
+}
+@loading (minimum 1s; after 500ms) {
+  <h3>loading.....</h3>
+}
+@error {
+  <h2>Un problème est survenu, nous ne pouvons pas charger le Huge Component :'</h2>
+}

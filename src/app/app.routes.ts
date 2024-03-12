@@ -1,8 +1,14 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { DeferComponent } from './defer/defer/defer.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
+  {
+    path: 'defer',
+    loadComponent: () =>
+      import('./defer/defer/defer.component').then((m) => m.DeferComponent),
+  },
   // Lazyload component
   {
     path: 'login',
@@ -13,7 +19,9 @@ export const routes: Routes = [
   {
     path: 'cd',
     loadComponent: () =>
-      import('./changeDetection/change-detection/change-detection.component').then((m) => m.ChangeDetectionComponent),
+      import(
+        './changeDetection/change-detection/change-detection.component'
+      ).then((m) => m.ChangeDetectionComponent),
   },
   //  Lazyload sub-routes
   {

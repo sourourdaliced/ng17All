@@ -1,25 +1,17 @@
 <p>switch works!</p>
 
-<div>
-  @switch (streamingService) {
-    @case ('AppleTV') {
-      <div>Ted Lasso</div>
-    }
-    @case ('Disney+') {
-      <div>Mandalorian</div>
-    }
-    @default {
-      <div>Peaky Blinders</div>
-    }
-  }
+<div [ngSwitch]="streamingService">
+  <div *ngSwitchCase="'AppleTV'">Ted Lasso</div>
+  <div *ngSwitchCase="'Disney+'">Mandalorian</div>
+  <div *ngSwitchDefault>Peaky Blinders</div>
 </div>
 
 @switch(streamingService) {
   @case ('Disney+') {
     <div>'Mandalorian'</div>
-    } @case ('AppleTV') {
+  } @case ('AppleTV') {
     <div>'Ted Lasso'</div>
-    } @default {
+  } @default {
     <div>'Peaky Blinders'</div>
   }
 }
