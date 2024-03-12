@@ -109,6 +109,22 @@
                 >for</a
               >
             </li>
+            <li>
+              <a
+                class="dropdown-item"
+                [routerLink]="['flow/if']"
+                routerLinkActive="active "
+                >if</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                [routerLink]="['flow/switch']"
+                routerLinkActive="active "
+                >switch</a
+              >
+            </li>
           </ul>
         </li>
         <a *ngIf="!authService.isAuthenticated()" class="nav-link" [routerLink]="['login']"

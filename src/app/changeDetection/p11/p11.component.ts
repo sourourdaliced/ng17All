@@ -14,6 +14,7 @@ export class P11Component {
     console.log('aFakeFunction in app-p11');
     return 'aFakeFunction in app-p11';
   }
+  doSomething() {}
 
   signalService: SignalService = inject(SignalService);
 }
