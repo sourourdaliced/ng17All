@@ -5,14 +5,14 @@ import { ROUTES, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { APP_ROUTES } from '../../config/routes.config';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
-import { NgForOf, NgIf } from '@angular/common';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   standalone: true,
-  imports: [FormsModule, NgForOf, NgIf]
+  imports: [FormsModule]
 })
 export class LoginComponent {
   constructor(

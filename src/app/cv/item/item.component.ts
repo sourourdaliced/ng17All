@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Cv } from '../model/cv';
 import { CvService } from '../services/cv.service';
-import { NgIf, NgForOf, NgStyle } from '@angular/common';
+import { NgStyle } from '@angular/common';
 import { DefaultImagePipe } from "../pipes/default-image.pipe";
 
 @Component({
@@ -9,7 +9,7 @@ import { DefaultImagePipe } from "../pipes/default-image.pipe";
     templateUrl: './item.component.html',
     styleUrls: ['./item.component.css'],
     standalone: true,
-    imports: [NgIf, NgForOf, NgStyle, DefaultImagePipe]
+    imports: [NgStyle, DefaultImagePipe]
 })
 export class ItemComponent {
   @Input() cv: Cv | null = null;

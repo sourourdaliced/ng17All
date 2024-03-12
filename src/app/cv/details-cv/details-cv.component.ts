@@ -6,12 +6,12 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../auth/services/auth.service';
 import { APP_ROUTES } from '../../config/routes.config';
 import { DefaultImagePipe } from '../pipes/default-image.pipe';
-import { NgIf } from '@angular/common';
+
 @Component({
   selector: 'app-details-cv',
   templateUrl: './details-cv.component.html',
   standalone: true,
-  imports: [DefaultImagePipe, NgIf],
+  imports: [DefaultImagePipe],
   styleUrls: ['./details-cv.component.css'],
 
 })

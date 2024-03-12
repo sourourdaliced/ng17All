@@ -1,10 +1,10 @@
-import { NgClass, NgFor, NgForOf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-for',
   standalone: true,
-  imports: [NgForOf, NgClass],
+  imports: [NgClass],
   templateUrl: './for.component.html',
   styleUrl: './for.component.css',
 })
