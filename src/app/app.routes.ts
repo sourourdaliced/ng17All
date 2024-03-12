@@ -9,6 +9,12 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./auth/login/login.component').then((m) => m.LoginComponent),
   },
+  // Lazyload component
+  {
+    path: 'cd',
+    loadComponent: () =>
+      import('./changeDetection/change-detection/change-detection.component').then((m) => m.ChangeDetectionComponent),
+  },
   //  Lazyload sub-routes
   {
     path: 'cv',

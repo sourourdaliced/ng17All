@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ColorUtComponent } from './color-ut.component';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { getElementByAttributeName } from '../../test helpers/test.helpers';
 
 fdescribe('ColorUtComponent', () => {
   let component: ColorUtComponent;
@@ -25,12 +26,12 @@ fdescribe('ColorUtComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should have a red paragraphe', () => {
-    const paragraphe = template.query(By.css('[data-testid="para"]'));
+    const paragraphe = getElementByAttributeName('para', template);
     template.triggerEventHandler('click');
     expect(paragraphe.nativeElement.style.backgroundColor).toBe('red');
   });
   it('should have a yellow paragraphe after clicking on it', () => {
-    const paragraphe = template.query(By.css('[data-testid="para"]'));
+    const paragraphe = getElementByAttributeName('para', template);
     paragraphe.triggerEventHandler('click');
     fixture.detectChanges();
     expect(paragraphe.nativeElement.style.backgroundColor).toBe('yellow');
