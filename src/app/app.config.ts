@@ -12,7 +12,8 @@ export const appConfig: ApplicationConfig = {
       routes,
       // This allow us to get all router data, param, resolver from Input
       // without injecting acr
-      withComponentInputBinding()),
+      withComponentInputBinding()
+      ),
     provideAnimations(), // required animations providers
     provideToastr(), // Toastr providers
     provideHttpClient(

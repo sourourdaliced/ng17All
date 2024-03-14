@@ -1,10 +1,12 @@
 <p>defer works!</p>
-<p>differ examples!</p>
-@defer(on idle ; prefetch on idle) {
+<p #deferTriggerElement>defer trigger</p>
+
+<input type="text" #myInput (keyup)="myInput.value.length > 4 ? loadDeffered = true : loadDeffered = false" class="form-control">
+@defer(when loadDeffered ; prefetch on hover) {
   <app-huge/>
 }
 @placeholder(minimum 1s) {
-  <h2>Nous chargeons le Huge Component merci de nous attendre :)</h2>
+  <h2>Je suis la en attendant le vrai component:)</h2>
 }
 @loading (minimum 1s; after 500ms) {
   <h3>loading.....</h3>
@@ -12,3 +14,4 @@
 @error {
   <h2>Un problème est survenu, nous ne pouvons pas charger le Huge Component :'</h2>
 }
+<div>Some code</div>

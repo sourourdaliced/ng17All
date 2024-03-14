@@ -12,4 +12,5 @@ export class P21Component {
     console.log('aFakeFunction in app-p21');
     return 'aFakeFunction in app-p21';
   }
+  f() {}
 }

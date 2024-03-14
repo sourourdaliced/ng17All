@@ -10,4 +10,7 @@ import { HugeComponent } from "../huge/huge.component";
 })
 export class DeferComponent {
 
+  loadDeffered: boolean = false;
+
+
 }

@@ -17,4 +17,5 @@ export class P11Component {
   doSomething() {}
 
   signalService: SignalService = inject(SignalService);
+  f() {}
 }
