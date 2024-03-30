@@ -38,4 +38,9 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./workflow/flow.routes').then((m) => m.FLOW_ROUTES),
   },
+  {
+    path: 'rxjs',
+    loadChildren: () =>
+      import('./rxjs/rxjs.routes').then((m) => m.RXJS_ROUTES),
+  },
 ];

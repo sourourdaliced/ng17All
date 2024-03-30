@@ -5,21 +5,26 @@ import { IsEvenComponent } from "./signals/is-even/is-even.component";
 import { FormsModule } from '@angular/forms';
 import { SignalApiComponent } from "./signals/signal-api/signal-api.component";
 import { SignalService } from './signals/signal.service';
+import { OrsysComponent } from "./orsys/orsys.component";
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    templateUrl: './app.component.html',
+    template: `
+    <app-navbar />
+    <app-orsys/>
+    <!-- <div (click)="duplicateValue()" class="alert alert-primary">
+      {{ value }}
+    </div> -->
+    <router-outlet />
+  `,
     styleUrl: './app.component.css',
-    imports: [
-        NavbarComponent,
-        RouterOutlet,
-    ]
+    imports: [NavbarComponent, RouterOutlet, OrsysComponent]
 })
 export class AppComponent {
-  private _value = "init value ";
+  private _value = 'init value ';
   signalService = inject(SignalService);
-  get value () {
+  get value() {
     console.log('computing value');
     return this._value;
   }

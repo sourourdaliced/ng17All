@@ -5,7 +5,14 @@
   "projects": {
     "ng17AllApp": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": true,
+          "skipTests": true,
+          "inlineTemplate": true,
+          "skipImport": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",

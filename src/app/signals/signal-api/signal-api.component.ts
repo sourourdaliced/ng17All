@@ -1,4 +1,4 @@
-import { Component, computed, signal, untracked } from '@angular/core';
+import { Component, WritableSignal, computed, signal, untracked } from '@angular/core';
 
 @Component({
   selector: 'app-signal-api',
@@ -20,7 +20,7 @@ import { Component, computed, signal, untracked } from '@angular/core';
   `,
 })
 export class SignalApiComponent {
-  lastname = signal('sellaouti');
+  lastname: WritableSignal<string> = signal('sellaouti');
   firstname = signal('aymen');
   fullname = computed(() => {
     console.log('i am computing....');

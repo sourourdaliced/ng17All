@@ -9,20 +9,20 @@ describe('Visite Cv page', () => {
     cy.intercept(API.cv, { fixture: 'cvs' });
     cy.visit('/cv');
     const list = cy.get('[data-cy=cvlist]'); //.then(listcvs => cy.log('Text: '+listcvs.text()));
-    const listFirst = list.first().then( listFirstElements => {
-      console.log('listFirstElements' );
-      console.log(listFirstElements);
-      // list.then((listcvss) => cy.log('listcvs : ' + listcvss.text()));
+    // const listFirst = list.first().then( listFirstElements => {
+    //   console.log('listFirstElements' );
+    //   console.log(listFirstElements);
+    //   // list.then((listcvss) => cy.log('listcvs : ' + listcvss.text()));
 
-      // console.log('list === listFirst', listFirst === list);
+    //   // console.log('list === listFirst', listFirst === list);
 
-    });
+    // });
 
-    listFirst.contains('Aymen');
+    cy.get('[data-cy=cvlist]').contains('Aymen');
 
     cy.get('[data-cy=cvCard]').should('not.exist');
-    listFirst.click();
-    cy.get('[data-cy=cv-card]').contains('Aymen');
+    cy.get('[data-cy=cvlist]').children().first().click();
+    cy.get('[data-cy=cvCard]').contains('Aymen');
     cy.intercept(API.cv+1, { fixture: 'cv1' });
     cy.get('[data-cy=details-cv-button]').click({force:true});
     cy.location().should((location) => {

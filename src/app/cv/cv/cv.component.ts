@@ -1,43 +1,53 @@
 import { Component } from '@angular/core';
 import { Cv } from '../model/cv';
-import { LoggerService } from '../../services/logger.service';
-import { ToastrService } from 'ngx-toastr';
 import { CvService } from '../services/cv.service';
-import { DatePipe, UpperCasePipe } from '@angular/common';
+import { AsyncPipe, DatePipe, UpperCasePipe } from '@angular/common';
 import { ListComponent } from "../list/list.component";
 import { CvCardComponent } from "../cv-card/cv-card.component";
 import { EmbaucheComponent } from "../embauche/embauche.component";
+import { Observable, catchError, finalize, map, of, share, shareReplay, tap } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 @Component({
-    selector: 'app-cv',
-    templateUrl: './cv.component.html',
-    standalone: true,
-    styleUrls: ['./cv.component.css'],
-    imports: [DatePipe, UpperCasePipe, ListComponent, CvCardComponent, EmbaucheComponent]
+  selector: 'app-cv',
+  templateUrl: './cv.component.html',
+  standalone: true,
+  styleUrls: ['./cv.component.css'],
+  imports: [
+    DatePipe,
+    UpperCasePipe,
+    ListComponent,
+    CvCardComponent,
+    EmbaucheComponent,
+    AsyncPipe
+  ],
 })
 export class CvComponent {
-  cvs: Cv[] = [];
-  nbClickItem = 0;
-  /*   selectedCv: Cv | null = null; */
+  cvs$!: Observable<Cv[]>;
+  junios$!: Observable<Cv[]>;
+  seniors$!: Observable<Cv[]>;
   date = new Date();
-
-  constructor(
-    private logger: LoggerService,
-    private toastr: ToastrService,
-    private cvService: CvService
-  ) {
-    this.cvService.getCvs().subscribe({
-      next: (cvs) => {
-        this.cvs = cvs;
-      },
-      error: () => {
-        this.cvs = this.cvService.getFakeCvs();
+  constructor(private cvService: CvService, private toastr: ToastrService) {}
+  ngOnInit() {
+    this.cvs$ = this.cvService.getCvs().pipe(
+      catchError((e) => {
+        /* return EMPTY; */
         this.toastr.error(`
           Attention!! Les données sont fictives, problème avec le serveur.
           Veuillez contacter l'admin.`);
-      },
-    });
-    this.logger.logger('je suis le cvComponent');
-    this.toastr.info('Bienvenu dans notre CvTech');
-    this.cvService.selectCv$.subscribe(() => this.nbClickItem++);
+        return of(this.cvService.getFakeCvs());
+      }),
+      share()
+    );
+    this.junios$ = this.cvs$.pipe(
+      tap(() => console.log('Start Junior')),
+      map((cvs) => cvs.filter((cv) => cv.age < 40)),
+      finalize(() => console.log('complete Junior')
+      )
+    );
+    this.seniors$ = this.cvs$.pipe(
+      tap(() => console.log('Start Seniors')),
+      map((cvs) => cvs.filter((cv) => cv.age >= 40)),
+      finalize(() => console.log('complete Senior'))
+    );
   }
 }

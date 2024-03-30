@@ -13,15 +13,19 @@ import { Component, signal, effect, Injector, inject } from '@angular/core';
 })
 export class EffectComponent {
   counter = signal(0);
-  private injector = inject(Injector);
-
-  increment() {
-    this.counter.update( counter => counter+1);
+  constructor() {
+    this.counter.set(1);
+    this.counter.set(2);
   }
   private logEffect = effect(() => {
     console.log(`The current count is: ${this.counter()}`);
   });
-  private logEffectWithInjector = effect(() => {
-    console.log(`The current count is: ${this.counter()}`);
-  }, { injector: this.injector });
+
+  increment() {
+    this.counter.update( counter => counter+1);
+  }
+  // private injector = inject(Injector);
+  // private logEffectWithInjector = effect(() => {
+  //   console.log(`The current count is: ${this.counter()}`);
+  // }, { injector: this.injector });
 }

@@ -1,8 +1,8 @@
 <p>defer works!</p>
 <p #deferTriggerElement>defer trigger</p>
-
+<div>cc</div>
 <input type="text" #myInput (keyup)="myInput.value.length > 4 ? loadDeffered = true : loadDeffered = false" class="form-control">
-@defer(when loadDeffered ; prefetch on hover) {
+@defer(on hover ; prefetch on viewport) {
   <app-huge/>
 }
 @placeholder(minimum 1s) {
@@ -15,3 +15,7 @@
   <h2>Un problème est survenu, nous ne pouvons pas charger le Huge Component :'</h2>
 }
 <div>Some code</div>
+
+<!-- Pretfetch va me le récupérer de mon serveur donc téleécharge le bundle -->
+
+<!-- Show affiche le  -->
