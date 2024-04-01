@@ -18,10 +18,10 @@ describe('Visite Cv page', () => {
 
     // });
 
-    cy.get('[data-cy=cvlist]').contains('Aymen');
-
-    cy.get('[data-cy=cvCard]').should('not.exist');
-    cy.get('[data-cy=cvlist]').children().first().click();
+    list.contains('Aymen');
+    const card = cy.get('[data-cy=cvCard]');
+    card.should('not.exist');
+    list.children().first().click();
     cy.get('[data-cy=cvCard]').contains('Aymen');
     cy.intercept(API.cv+1, { fixture: 'cv1' });
     cy.get('[data-cy=details-cv-button]').click({force:true});

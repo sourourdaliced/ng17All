@@ -1,0 +1,28 @@
+<div class="alert alert-info">
+
+<div class="row">
+  <div class="col-5">
+    <input type="text" placeholder="name" [(ngModel)]="todo().name" class="form-control">
+  </div>
+  <div class="col-5">
+    <input type="text" placeholder="content" [(ngModel)]="todo().content" class="form-control">
+  </div>
+  <div class="col">
+    <button (click)="addTodo()" class="btn btn-danger">add</button>
+  </div>
+</div>
+<div class="row mt-2">
+  <div class="alert alert-secondary col">
+    <h2>Waiting</h2>
+    <app-todos (changeTodoEvent)="updateTodo($event)" [todos]="waitingTodos()"/>
+  </div>
+  <div class="alert alert-warning col">
+    <h2>In Progress Todos</h2>
+    <app-todos (changeTodoEvent)="updateTodo($event)"  [todos]="inProgressTodos()"/>
+  </div>
+  <div class="alert alert-success col">
+    <h2>Done Todos</h2>
+    <app-todos (changeTodoEvent)="updateTodo($event)"  [todos]="doneTodos()"/>
+  </div>
+</div>
+</div>

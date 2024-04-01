@@ -12,7 +12,7 @@ import { OrsysComponent } from "./orsys/orsys.component";
     standalone: true,
     template: `
     <app-navbar />
-    <app-orsys/>
+    <!-- <app-orsys/> -->
     <!-- <div (click)="duplicateValue()" class="alert alert-primary">
       {{ value }}
     </div> -->

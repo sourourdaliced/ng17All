@@ -1,3 +1,4 @@
+import { TodoListComponent } from "../todo-list/todo-list.component";
 import { ComputedProblemComponent } from "./computed-problem/computed-problem.component";
 import { CurrencyComponent } from "./currency/currency.component";
 import { EffectComponent } from "./effect/effect.component";
@@ -24,4 +25,5 @@ export const SIGNAL_ROUTES = [
   { path: 'onpush', component: OnPushSignalsComponent },
   { path: 'signalrxjs', component: SignalRxjsComponent },
   { path: 'rxjsInterop', component: RxjsInteropComponent },
+  { path: 'todos', component: TodoListComponent },
 ];

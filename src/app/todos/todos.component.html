@@ -1,0 +1,13 @@
+<ol class="list-group-item">
+  @for (todo of todos(); track $index) {
+  <li class="list-group">
+    {{ todo.name}} {{ todo.content}}
+    <select #statusSelect (change)="onChangeStatus({id:todo.id, status: statusSelect.value})" class="form-control">
+      <!-- @for (statu of status | removeTableElement: todo.status; track $index) { -->
+      @for (statu of status; track $index) {
+      <option  value="{{statu}}" [selected]="todo.status == statu">{{statu}}</option>
+      }
+    </select>
+  </li>
+  }
+</ol>
