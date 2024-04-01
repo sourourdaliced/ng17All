@@ -15,7 +15,7 @@ export class IsEvenComponent {
   // isEvenn!: boolean;
   counter = input.required({
     alias: 'counter',
-    transform: (value: number) => value ? 0 : value * 100,
+    transform: (value: number) => value * 100,
   });
   isEven = computed(() => !(this.counter() % 2));
 }
